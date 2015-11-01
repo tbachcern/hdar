@@ -20,6 +20,14 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<resources>
+			<resource>
+				<directory>src/</directory>
+			</resource>
+			<resource>
+				<directory>jUnit/</directory>
+			</resource>
+		</resources>
 	</build>
 	<dependencies>
 		<dependency>

@@ -17,6 +17,7 @@ import org.jsoup.select.Elements;
 public class HdaEntryParser {
   private static final String HDA_WEBSITE_BASE_ID_STRING = "http://www.hd-area.org/index.php?id=";
 
+  /** requires internet connection */
   public static HdaEntry parseHdaWebsiteStringToHdaEntry(final String website) {
     if (!website.contains(HDA_WEBSITE_BASE_ID_STRING))
       throw new IllegalArgumentException("String looks invalid, does not contain " + HDA_WEBSITE_BASE_ID_STRING + " String: " + website);
@@ -29,12 +30,7 @@ public class HdaEntryParser {
 
     try {
       final Document document = Jsoup.connect(website).get();
-      final Element divIdContent = document.getElementById("content");
-      setTitleInformation(hdaEntry, divIdContent);
-      setHdaInformation(hdaEntry, divIdContent);
-      setContent(hdaEntry, divIdContent);
-      // System.out.println(divIdContent);
-
+      parseJsoupDocument(hdaEntry, document);
     }
     catch (final IOException exception) {
       exception.printStackTrace();
@@ -46,9 +42,16 @@ public class HdaEntryParser {
     return hdaEntry;
   }
 
+  static void parseJsoupDocument(final HdaEntry hdaEntry, final Document document) {
+    final Element divIdContent = document.getElementById("content");
+    setTitleInformation(hdaEntry, divIdContent);
+    setHdaInformation(hdaEntry, divIdContent);
+    setContent(hdaEntry, divIdContent);
+  }
+
   private static final String ID_KEYWORD = "id=";
 
-  private static int getIdFromWebsiteString(final String website) {
+  static int getIdFromWebsiteString(final String website) {
     final int indexOfIdKeyword = website.indexOf(ID_KEYWORD);
     return Integer.parseInt(website.substring(indexOfIdKeyword + ID_KEYWORD.length()));
   }

@@ -1,6 +1,6 @@
 package hdar.util;
 
-public class StringUitl {
+public class StringUtil {
 
   private static final String ID_KEYWORD = "id=";
 

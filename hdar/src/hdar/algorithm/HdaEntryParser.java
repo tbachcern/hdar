@@ -2,6 +2,7 @@ package hdar.algorithm;
 
 import hdar.model.HdaCategory;
 import hdar.model.HdaEntry;
+import hdar.util.StringUitl;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -26,7 +27,7 @@ public class HdaEntryParser {
     final HdaEntry hdaEntry = new HdaEntry();
     hdaEntry.setUrl(website);
     hdaEntry.setLastHdaAccessTime(Instant.now());
-    hdaEntry.setId(getIdFromWebsiteString(website));
+    hdaEntry.setId(StringUitl.getIdFromWebsiteStringString(website));
 
     try {
       final Document document = Jsoup.connect(website).get();
@@ -47,13 +48,6 @@ public class HdaEntryParser {
     setTitleInformation(hdaEntry, divIdContent);
     setHdaInformation(hdaEntry, divIdContent);
     setContent(hdaEntry, divIdContent);
-  }
-
-  private static final String ID_KEYWORD = "id=";
-
-  static int getIdFromWebsiteString(final String website) {
-    final int indexOfIdKeyword = website.indexOf(ID_KEYWORD);
-    return Integer.parseInt(website.substring(indexOfIdKeyword + ID_KEYWORD.length()));
   }
 
   private static final String ANONYM_TO_STRING = "http://anonym.to/?";

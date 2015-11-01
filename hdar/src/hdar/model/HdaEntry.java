@@ -7,136 +7,164 @@ import java.util.Collections;
 import java.util.List;
 
 public class HdaEntry {
-  private int id;
-  private String url;
-  private String title;
-  private float imdb;
-  private String imdbFromHDA;
-  private String imdbUrl;
-  private Instant lastImdbAccessTime;
-  private Instant lastHdaAccessTime;
-  private String uploader;
-  private LocalDate uploadDate;
-  private List<HdaCategory> listHdaCategories = new ArrayList<>();
+	private int id;
+	private String url;
+	private String title;
+	private float imdb;
+	private String imdbFromHDA;
+	private String imdbUrl;
+	private Instant lastImdbAccessTime;
+	private Instant lastHdaAccessTime;
+	private String uploader;
+	private LocalDate uploadDate;
 
-  public int getId() {
-    return id;
-  }
+	private String content;
+	private List<HdaLink> listHdaLink = new ArrayList<>();
+	private List<HdaCategory> listHdaCategories = new ArrayList<>();
 
-  public void setId(final int id) {
-    this.id = id;
-  }
 
-  public String getTitle() {
-    return title;
-  }
+	public List<HdaLink> getListHdaLinks() {
+		return Collections.unmodifiableList(listHdaLink);
+	}
 
-  public void setTitle(final String title) {
-    this.title = title;
-  }
+	public void setListHdaLinks(List<HdaLink> listHdaLinks) {
+		this.listHdaLink = listHdaLinks;
+	}
+	public void addHdaLink(final HdaLink hdaLink){
+		this.listHdaLink.add(hdaLink);
+	}
 
-  public String getImdbFromHDA() {
-    return imdbFromHDA;
-  }
+	public List<HdaCategory> getListHdaCategories() {
+		return Collections.unmodifiableList(listHdaCategories);
+	}
 
-  public void setImdbFromHDA(final String imdbFromHDA) {
-    this.imdbFromHDA = imdbFromHDA;
-  }
+	public void setListHdaCategories(final List<HdaCategory> listHdaCategories) {
+		this.listHdaCategories = listHdaCategories;
+	}
 
-  public float getImdb() {
-    return imdb;
-  }
+	public void addHdaCategory(final HdaCategory hdaCategory) {
+		this.listHdaCategories.add(hdaCategory);
+	}
 
-  public void setImdb(final float imdb) {
-    this.imdb = imdb;
-  }
+	public String getContent() {
+		return content;
+	}
 
-  public String getUrl() {
-    return url;
-  }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-  public void setUrl(final String url) {
-    this.url = url;
-  }
+	public int getId() {
+		return id;
+	}
 
-  public String getImdbUrl() {
-    return imdbUrl;
-  }
+	public void setId(final int id) {
+		this.id = id;
+	}
 
-  public void setImdbUrl(final String imdbUrl) {
-    this.imdbUrl = imdbUrl;
-  }
+	public String getTitle() {
+		return title;
+	}
 
-  public Instant getLastImdbAccessTime() {
-    return lastImdbAccessTime;
-  }
+	public void setTitle(final String title) {
+		this.title = title;
+	}
 
-  public void setLastImdbAccessTime(final Instant lastImdbAccessTime) {
-    this.lastImdbAccessTime = lastImdbAccessTime;
-  }
+	public String getImdbFromHDA() {
+		return imdbFromHDA;
+	}
 
-  public Instant getLastHdaAccessTime() {
-    return lastHdaAccessTime;
-  }
+	public void setImdbFromHDA(final String imdbFromHDA) {
+		this.imdbFromHDA = imdbFromHDA;
+	}
 
-  public void setLastHdaAccessTime(final Instant lastHdaAccessTime) {
-    this.lastHdaAccessTime = lastHdaAccessTime;
-  }
+	public float getImdb() {
+		return imdb;
+	}
 
-  public String getUploader() {
-    return uploader;
-  }
+	public void setImdb(final float imdb) {
+		this.imdb = imdb;
+	}
 
-  public void setUploader(final String uploader) {
-    this.uploader = uploader;
-  }
+	public String getUrl() {
+		return url;
+	}
 
-  public LocalDate getUploadDate() {
-    return uploadDate;
-  }
+	public void setUrl(final String url) {
+		this.url = url;
+	}
 
-  public void setUploadDate(final LocalDate uploadDate) {
-    this.uploadDate = uploadDate;
-  }
+	public String getImdbUrl() {
+		return imdbUrl;
+	}
 
-  public List<HdaCategory> getListHdaCategories() {
-    return Collections.unmodifiableList(listHdaCategories);
-  }
+	public void setImdbUrl(final String imdbUrl) {
+		this.imdbUrl = imdbUrl;
+	}
 
-  public void setListHdaCategories(final List<HdaCategory> listHdaCategories) {
-    this.listHdaCategories = listHdaCategories;
-  }
+	public Instant getLastImdbAccessTime() {
+		return lastImdbAccessTime;
+	}
 
-  public void addHdaCategory(final HdaCategory hdaCategory) {
-    this.listHdaCategories.add(hdaCategory);
-  }
+	public void setLastImdbAccessTime(final Instant lastImdbAccessTime) {
+		this.lastImdbAccessTime = lastImdbAccessTime;
+	}
 
-  @Override
-  public String toString() {
-    final StringBuilder builder = new StringBuilder();
-    builder.append("HdaEntry [id=");
-    builder.append(id);
-    builder.append("\n, url=");
-    builder.append(url);
-    builder.append("\n, title=");
-    builder.append(title);
-    builder.append("\n, imdb=");
-    builder.append(imdb);
-    builder.append("\n, imdbFromHDA=");
-    builder.append(imdbFromHDA);
-    builder.append("\n, imdbUrl=");
-    builder.append(imdbUrl);
-    builder.append("\n, lastImdbAccessTime=");
-    builder.append(lastImdbAccessTime);
-    builder.append("\n, lastHdaAccessTime=");
-    builder.append(lastHdaAccessTime);
-    builder.append("\n, uploader=");
-    builder.append(uploader);
-    builder.append("\n, uploadDate=");
-    builder.append(uploadDate);
-    builder.append("\n, listHdaCategories=");
-    builder.append(listHdaCategories);
-    builder.append("]");
-    return builder.toString();
-  }
+	public Instant getLastHdaAccessTime() {
+		return lastHdaAccessTime;
+	}
+
+	public void setLastHdaAccessTime(final Instant lastHdaAccessTime) {
+		this.lastHdaAccessTime = lastHdaAccessTime;
+	}
+
+	public String getUploader() {
+		return uploader;
+	}
+
+	public void setUploader(final String uploader) {
+		this.uploader = uploader;
+	}
+
+	public LocalDate getUploadDate() {
+		return uploadDate;
+	}
+
+	public void setUploadDate(final LocalDate uploadDate) {
+		this.uploadDate = uploadDate;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("HdaEntry [\nid=");
+		builder.append(id);
+		builder.append(", \nurl=");
+		builder.append(url);
+		builder.append(", \ntitle=");
+		builder.append(title);
+		builder.append(", \nimdb=");
+		builder.append(imdb);
+		builder.append(", \nimdbFromHDA=");
+		builder.append(imdbFromHDA);
+		builder.append(", \nimdbUrl=");
+		builder.append(imdbUrl);
+		builder.append(", \nlastImdbAccessTime=");
+		builder.append(lastImdbAccessTime);
+		builder.append(", \nlastHdaAccessTime=");
+		builder.append(lastHdaAccessTime);
+		builder.append(", \nuploader=");
+		builder.append(uploader);
+		builder.append(", \nuploadDate=");
+		builder.append(uploadDate);
+		builder.append(", \ncontent=");
+		builder.append(content);
+		builder.append(", \nlistHdaLink=");
+		builder.append(listHdaLink);
+		builder.append(", \nlistHdaCategories=");
+		builder.append(listHdaCategories);
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

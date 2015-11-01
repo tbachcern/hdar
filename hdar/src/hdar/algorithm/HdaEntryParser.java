@@ -74,19 +74,14 @@ public class HdaEntryParser {
     final Element divClassBoxrechts = divContent.getElementsByClass("boxrechts").first();
     final Element divClassBoxrechtsTagA = divClassBoxrechts.getElementsByTag("a").first();
     // example: -tbach
-    // <a href="http://anonym.to/?http://www.imdb.com/title/tt3205802/"
-    // target="_blank" rel="nofollow"
-    // title="How.to.Get.Away.with.Murder.S01.GERMAN.720p.HDTV.x264-MDGP">IMDb
-    // 8,3/10</a>
+    // <a href="http://anonym.to/?http://www.imdb.com/title/tt3205802/" target="_blank" rel="nofollow"
+    // title="How.to.Get.Away.with.Murder.S01.GERMAN.720p.HDTV.x264-MDGP">IMDb 8,3/10</a>
     hdaEntry.setImdbFromHDA(divClassBoxrechtsTagA.text());
     hdaEntry.setImdbUrl(divClassBoxrechtsTagA.attr("href").replace(ANONYM_TO_STRING, ""));
     hdaEntry.setTitle(divClassBoxrechtsTagA.attr("title"));
   }
 
-  private static final DateTimeFormatter DATE_TIME_FORMATTER_HDA = DateTimeFormatter.ofPattern("d.M.yy"); // example:
-
-  // 7.05.15
-  // -tbach
+  private static final DateTimeFormatter DATE_TIME_FORMATTER_HDA = DateTimeFormatter.ofPattern("d.M.yy"); // example: 7.05.15 -tbach
 
   private static void setHdaInformation(final HdaEntry hdaEntry, final Element divIdContent) {
     final Element divClassTopinfo = divIdContent.getElementsByClass("topinfo").first();
@@ -95,11 +90,9 @@ public class HdaEntryParser {
     // Uploader:
     // <b>HDA</b> � Datum:
     // <b> 7.05.15</b> � Kategorie
-    // <a
-    // href="http://www.hd-area.org/index.php?s=movies&amp;c=720p">720p</a>
+    // <a href="http://www.hd-area.org/index.php?s=movies&amp;c=720p">720p</a>
     // &gt;
-    // <a
-    // href="http://www.hd-area.org/index.php?s=movies&amp;c=Serien">Serien</a>
+    // <a/ href="http://www.hd-area.org/index.php?s=movies&amp;c=Serien">Serien</a>
     // </div>
 
     final Elements divClassTopinfoTagB = divClassTopinfo.getElementsByTag("b");
@@ -119,6 +112,5 @@ public class HdaEntryParser {
   static void setContent(final HdaEntry hdaEntry, final Element divIdContent) {
     final Element divClassDownload = divIdContent.getElementsByClass("download").first();
     hdaEntry.setContent(String.valueOf(divClassDownload));
-    // System.out.println("div"+divClassDownload);
   }
 }

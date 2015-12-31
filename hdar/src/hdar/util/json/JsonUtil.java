@@ -1,4 +1,4 @@
-package hdar.util;
+package hdar.util.json;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;

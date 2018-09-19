@@ -1,2 +1,2 @@
 # hdar
-hda Reader
+hda reader

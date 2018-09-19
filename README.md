@@ -1,2 +1,2 @@
 # hdar
-HD Area Reader
+hda Reader
